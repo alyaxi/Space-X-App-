@@ -11,4 +11,4 @@ let firebaseConfig = {
   firebase.initializeApp(firebaseConfig)
   firebase.messaging();
 
-  export default firebase
+  export default firebase;

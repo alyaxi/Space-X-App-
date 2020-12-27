@@ -1,6 +1,5 @@
-
-importScripts("https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js")
-importScripts("https://www.gstatic.com/firebasejs/8.0.2/firebase-messaging.js");
+importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js');
 
 
 let firebaseConfig = {
@@ -11,4 +10,5 @@ let firebaseConfig = {
     messagingSenderId: "444737796792",
     appId: "1:444737796792:web:fe67110a27dc6cfde7924d"
   };
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
+firebase.messaging();

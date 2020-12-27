@@ -9,12 +9,26 @@ import firebase from './services/firebaseservice';
 
 function App() {
   React.useEffect(() => {
-
     const messaging = firebase.messaging();
-    messaging.requestPermission().then(async (): Promise<void> => {
-      const token = await messaging.getToken();
-      prompt("Welcome to SpaceX \n Token", token);
-    })
+    function initNotification() {
+        Notification.requestPermission().then((permission) => {
+            console.log(permission)
+            if (permission === 'granted'){
+                messaging.getToken().then((currentToken) => {
+                    if (currentToken) {
+                        console.log("Token: ");
+                        console.log(currentToken);
+                    } else {
+                      console.log('No registration token available. Request permission to generate one.');
+                    }
+                  }).catch((err) => {
+                    console.log('An error occurred while retrieving token. ', err);
+                    
+                  });
+                }
+              })
+            }
+            initNotification()
 
 } , []);
 
