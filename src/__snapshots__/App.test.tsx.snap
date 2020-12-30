@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the app component 1`] = `
+<div
+  className="App"
+>
+  <BrowserRouter>
+    <Routing />
+  </BrowserRouter>
+</div>
+`;

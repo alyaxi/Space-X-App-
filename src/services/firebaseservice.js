@@ -1,4 +1,4 @@
-import firebase from "firebase"
+import firebase from "firebase";
 
 let firebaseConfig = {
     apiKey: "AIzaSyD23mZS1IWITUHuJwz-Gyq-sw-6c7fPKhg",
@@ -9,6 +9,23 @@ let firebaseConfig = {
     appId: "1:444737796792:web:fe67110a27dc6cfde7924d"
   };
   firebase.initializeApp(firebaseConfig)
-  firebase.messaging();
-
-  export default firebase;
+  const messaging = firebase.messaging();
+export default function initNotification() {
+    Notification.requestPermission().then((permission) => {
+        console.log(permission)
+        if (permission === 'granted'){
+            messaging.getToken().then((currentToken) => {
+                if (currentToken) {
+                    console.log("Token: ");
+                    console.log(currentToken);
+                } else {
+                  console.log('No registration token available. Request permission to generate one.');
+                }
+              }).catch((err) => {
+                console.log('An error occurred while retrieving token. ', err);
+                
+              });
+        }
+    
+    })
+}
